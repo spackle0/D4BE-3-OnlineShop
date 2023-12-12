@@ -1,0 +1,64 @@
+[tool.ruff]
+line-length = 90
+
+[tool.black]
+line-length = 90
+
+[tool.isort]
+combine_as_imports=true
+combine_star=true
+skip_gitignore=true
+star_first=true
+
+[tool.flake8]
+max-line-length = 90
+exclude = ["migrations/"]
+
+[tool.pylint.MASTER]
+ignore-paths = ["migrations/"]
+
+[tool.pylint.'MESSAGES CONTROL']
+max-line-length = 90
+
+[tool.pylint.basic]
+docstring-min-length=10
+
+[tool.pylint.design]
+exclude-too-few-public-methods=true
+
+[tool.pylint.format]
+max-line-length=90
+
+[tool.pytest]
+addopts="-ra --tb=short -v --capture=no --setup-show"
+
+[tool.poetry]
+name = "d4be-3-onlineshop"
+version = "0.1.0"
+description = ""
+authors = ["spackle0 <spackle0@users.noreply.github.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "^5.0"
+python-decouple = "^3.8"
+pillow = "^10.1.0"
+flower = "^2.0.1"
+celery = "^5.3.6"
+asgiref = "^3.7.2"
+sqlparse = "^0.4.4"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^23.11.0"
+isort = "^5.13.1"
+bump2version = "^1.0.1"
+pylint = "^3.0.3"
+ruff = "^0.1.7"
+flake8 = "^6.1.0"
+django-debug-toolbar = "^4.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
