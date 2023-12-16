@@ -16,15 +16,24 @@ exclude = ["migrations/"]
 
 [tool.pylint.MASTER]
 ignore-paths = ["migrations/"]
+load-plugins = ["pylint_pydantic", "pylint_django"]
+extension-pkg-whitelist = ["pydantic"]
 
-[tool.pylint.'MESSAGES CONTROL']
+[tool.pylint.messages_control]
 max-line-length = 90
+disable = [
+    "fixme",
+    "too-few-public-methods",
+]
 
 [tool.pylint.basic]
 docstring-min-length=10
 
 [tool.pylint.design]
-exclude-too-few-public-methods=true
+# limiting the number of returns might discourage
+# the use of guard clauses. So increase the
+# allowed number of returns from 6 to 8
+max-returns = 8
 
 [tool.pylint.format]
 max-line-length=90
@@ -58,6 +67,8 @@ pylint = "^3.0.3"
 ruff = "^0.1.7"
 flake8 = "^6.1.0"
 django-debug-toolbar = "^4.2.0"
+pylint-pydantic = "^0.3.1"
+pylint-django = "^2.5.5"
 
 [build-system]
 requires = ["poetry-core"]
