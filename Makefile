@@ -64,3 +64,7 @@ mksu:
 .PHONY: make_key
 make_key:
 	poetry run python -c 'from django.core.management.utils import get_random_secret_key; print(get_random_secret_key())'
+
+.PHONY: runrabbit
+runrabbit:
+	docker run -it --rm --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:management
